@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className={pretendard.className}>
+      <body className={`${pretendard.className} h-dvh`}>
         <header className='bg-gray-50 dark:bg-gray-800 p-8'>
           <div className='container mx-auto'>
             <div className='flex justify-between items-center'>
