@@ -1,20 +1,10 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import profilePic from '@/assets/ttaerrim.jpg';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <>
-      <header className='bg-gray-50 dark:bg-gray-800 p-8'>
-        <div className='container mx-auto'>
-          <div className='flex justify-between items-center'>
-            <Link href='#'>
-              <h1 className='text-3xl font-bold text-gray-900 dark:text-gray-100'>ttaerrim</h1>
-            </Link>
-            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Contact Me</button>
-          </div>
-        </div>
-      </header>
       <section className='container mx-auto py-10 px-6 md:px-12 lg:px-20'>
         <div className='grid lg:grid-cols-2 gap-12 items-center'>
           <div>
@@ -43,7 +33,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className='container mx-auto py-10 px-6 md:px-12 lg:px-20'>Show My Portfolio</section>
+      <section className='container mx-auto py-10 px-6 md:px-12 lg:px-20'>
+        <Link href='/portfolio'>Show My Portfolio</Link>
+      </section>
     </>
   );
 }
