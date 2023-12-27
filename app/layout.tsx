@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import Link from 'next/link';
 
-const inter = Inter({ subsets: ['latin'] });
+// Font files can be colocated inside of `app`
+const pretendard = localFont({
+  src: './PretendardVariable.woff2',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "ttaerrim's portfolio",
@@ -13,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={pretendard.className}>
         <header className='bg-gray-50 dark:bg-gray-800 p-8'>
           <div className='container mx-auto'>
             <div className='flex justify-between items-center'>
