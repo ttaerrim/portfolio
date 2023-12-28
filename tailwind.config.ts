@@ -15,6 +15,9 @@ const config: Config = {
       colors: {
         'main-blue': '#2E6FF2',
       },
+      borderRadius: {
+        custom: '40% 60% 40% 60% / 40% 40% 60% 60%',
+      },
     },
   },
   plugins: [],
