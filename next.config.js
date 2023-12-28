@@ -1,4 +1,41 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  reactStrictMode: true,
+  experimental: {
+    appDir: true,
+    typedRoutes: true,
+    // scrollRestoration: true,
+  },
+  images: { domains: ['images.clerk.dev'] },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgoConfig: {
+              plugins: [
+                {
+                  name: 'preset-default',
+                  params: {
+                    overrides: {
+                      cleanupIds: false,
+                      removeViewBox: false,
+                    },
+                  },
+                },
+                'removeXMLNS',
+              ],
+            },
+          },
+        },
+      ],
+    });
 
-module.exports = nextConfig
+    return config;
+  },
+};
+
+module.exports = nextConfig;
