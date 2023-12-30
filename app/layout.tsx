@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body className={`${pretendard.className} h-dvh`}>
-        <header className='bg-gray-50 dark:bg-gray-800 p-8'>
+        <header className='bg-transparent dark:bg-gray-800 p-8 fixed w-full'>
           <div className='container mx-auto'>
             <div className='flex justify-between items-center'>
               <Link href='/'>
