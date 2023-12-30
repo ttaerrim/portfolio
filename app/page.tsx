@@ -1,11 +1,14 @@
+import { twc } from 'react-twc';
 import IC_TWINKLE from '@/assets/twinkle.svg?svgr';
+
+const TopLine = twc.p`flex justify-center items-center w-full relative after:content-[''] after:text-red-500 after:w-full after:h-0.5 after:inline-block after:bg-white after:ml-4`;
 
 export default function Home() {
   return (
     <div className='bg-main-blue h-full'>
       <div className='flex flex-col justify-center items-center mx-auto my-0 h-full w-9/12 max-w-4xl text-3xl text-white'>
         <div className='w-full relative'>
-          <p className="flex justify-center items-center w-full relative after:content-[''] after:text-red-500 after:w-full after:h-0.5 after:inline-block after:bg-white after:ml-4">{`<Hello>`}</p>
+          <TopLine>{`<Hello>`}</TopLine>
           <IC_TWINKLE width={60} height={60} className='absolute bottom-[30%] right-[-3.75rem]' />
           <IC_TWINKLE width={40} height={40} className='absolute bottom-[200%] right-[-5rem]' />
         </div>
