@@ -1,11 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    appDir: true,
-    typedRoutes: true,
-    // scrollRestoration: true,
-  },
   images: { domains: ['images.clerk.dev'] },
   webpack(config) {
     config.module.rules.push({
