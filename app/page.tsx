@@ -7,6 +7,7 @@ export default function Home() {
         <div className='w-full relative'>
           <p className="flex justify-center items-center w-full relative after:content-[''] after:text-red-500 after:w-full after:h-0.5 after:inline-block after:bg-white after:ml-4">{`<Hello>`}</p>
           <IC_TWINKLE width={60} height={60} className='absolute bottom-[30%] right-[-3.75rem]' />
+          <IC_TWINKLE width={40} height={40} className='absolute bottom-[200%] right-[-5rem]' />
         </div>
         <div className='w-full flex flex-col	items-center'>
           <div className='rounded-custom border-2	border-white	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
