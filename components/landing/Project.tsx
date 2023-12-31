@@ -14,7 +14,7 @@ export default function Project({ title, description, githubUrl, url, stacks, de
         <h3 className='text-base text-main-blue font-semibold px-1 bg-sub-blue rounded'>{title}</h3>
         <time className='ml-2 text-sm text-slate-400'>2022.03 ~ 2022.04</time>
       </div>
-      <section className='bg-sub-blue rounded p-4 gap-4 mt-4'>
+      <section className='bg-sub-blue rounded p-4 gap-4 mt-4 cursor-pointer hover:border-main-blue hover:border'>
         <div>
           <p className='font-semibold'>{description}</p>
           <p>
@@ -32,7 +32,7 @@ export default function Project({ title, description, githubUrl, url, stacks, de
             <li key={item}>{item}</li>
           ))}
         </ul>
-        <p className='mt-4 text-sm text-slate-400 ml-auto text-end underline cursor-pointer'>자세히 보기</p>
+        <p className='mt-4 text-sm text-slate-400 ml-auto text-end underline'>자세히 보기</p>
       </section>
     </article>
   );
