@@ -1,13 +1,7 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import './globals.css';
 import Link from 'next/link';
-
-// Font files can be colocated inside of `app`
-const pretendard = localFont({
-  src: './PretendardVariable.woff2',
-  display: 'swap',
-});
+import { pretendard } from './font';
 
 export const metadata: Metadata = {
   title: "ttaerrim's portfolio",

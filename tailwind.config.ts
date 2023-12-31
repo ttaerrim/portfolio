@@ -13,9 +13,10 @@ const config: Config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        'main-blue': '#2E6FF2',
-        'sub-blue': '#F3F5FA',
+        'main-blue': '#274CBD',
+        'sub-blue': '#D8DCF3',
         'point-blue': '#5C8EF2',
+        'sub-yellow': '#F2F1E5',
       },
       borderRadius: {
         custom: '40% 60% 40% 60% / 40% 40% 60% 60%',
