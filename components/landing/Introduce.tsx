@@ -13,6 +13,18 @@ export default function Introduce() {
       <Section title='Skills'>
         <Skills />
       </Section>
+      <Section title='Education'>
+        <div className='mt-6'>
+          <p>네이버 부스트캠프 웹 모바일 8기</p>
+          <p>원티드 프리온보딩 프론트엔드 코스</p>
+          <p>덕성여자대학교 IT미디어공학과</p>
+        </div>
+      </Section>
+      <Section title='Certificate'>
+        <div className='mt-6'>
+          <p>정보처리기사</p>
+        </div>
+      </Section>
     </div>
   );
 }
