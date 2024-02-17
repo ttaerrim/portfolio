@@ -1,3 +1,6 @@
+import Footer from '@/components/landing/Footer';
+import Introduce from '@/components/landing/Introduce';
+
 export default function Portfolio() {
   const portfolios = [
     {
@@ -15,19 +18,9 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className='mx-auto py-10 px-6 md:px-12 lg:px-20 grid lg:grid-rows-2 gap-12 items-center'>
-      {portfolios.map((portfolio) => {
-        const { title, startDate, endDate, description } = portfolio;
-        return (
-          <section key={title} className='border-solid border-2 border-indigo-600 rounded-sm'>
-            <p>{title}</p>
-            <p>{description}</p>
-            <p>
-              <span>{`${startDate} ~ ${endDate}`}</span>
-            </p>
-          </section>
-        );
-      })}
-    </div>
+    <>
+      <Introduce />
+      <Footer />
+    </>
   );
 }

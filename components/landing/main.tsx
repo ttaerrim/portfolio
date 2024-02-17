@@ -1,10 +1,11 @@
 import { pointFont } from '@/app/font';
 import IC_TWINKLE from '@/assets/twinkle.svg?svgr';
+import Link from 'next/link';
 
 export default function Landing() {
   return (
     <div className='bg-main-blue text-sub-yellow pb-16 h-full'>
-      <p className={`pt-20 text-center ${pointFont.className} text-[10vw]`}>TTAERRIM</p>
+      <p className={`pt-4 text-center ${pointFont.className} text-[10vw]`}>TTAERRIM</p>
       <div className='flex flex-col justify-center items-center mx-auto my-0 w-9/12 max-w-4xl text-3xl'>
         <div className='w-full relative'>
           <p
@@ -15,7 +16,7 @@ export default function Landing() {
         </div>
         <div className='w-full flex flex-col	items-center'>
           <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
-            Be Developer
+            <Link href='portfolio'>{`<Portfolio />`}</Link>
           </div>
           <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center text-4xl'>
             Taerim Lee

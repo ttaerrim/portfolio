@@ -5,7 +5,7 @@ import Skills from './Skills';
 
 export default function Introduce() {
   return (
-    <div className='bg-white flex flex-col justify-center items-center px-12 py-12 gap-12 max-w-6xl m-auto '>
+    <div className='bg-sub-yellow flex flex-col justify-center items-center px-12 py-12 pb-20 gap-12 max-w-6xl m-auto rounded-bl-[7rem] rounded-br-[7rem]	'>
       <IntroduceBox />
       <Section title='Projects'>
         <Project title='morak' description='hihi' githubUrl='' url='' stacks={['d', 'fd']} details={['ddd', 'ddfd']} />
