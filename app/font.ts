@@ -7,6 +7,11 @@ export const pretendard = localFont({
   display: 'swap',
 });
 
+export const hack = localFont({
+  src: './Hack-Regular.ttf',
+  display: 'swap',
+});
+
 export const pointFont = Climate_Crisis({
   subsets: ['latin'],
   display: 'swap',
