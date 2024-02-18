@@ -37,13 +37,27 @@ export default function Introduce() {
             <div key={work.name}>
               <p className='text-3xl font-semibold'>{work.name}</p>
               <p className='text-base font-light'>{work.position}</p>
-              <p className='font-light text-sm'>{printPeriod(work.period)}</p>
+              <time className='font-light text-sm'>{printPeriod(work.period)}</time>
             </div>
           ))}
         </div>
       </Section>
       <Section title='Projects'>
-        <Project title='morak' description='hihi' githubUrl='' url='' stacks={['d', 'fd']} details={['ddd', 'ddfd']} />
+        <Project
+          title='morak'
+          url='https://github.com/boostcampwm2023/web17_morak'
+          description='네이버 부스트캠프 내 모임 모집/관리 플랫폼'
+          stacks={['React', 'TypeScript', 'React Query']}
+          details={[
+            'TMap SDK를 활용한 지도 페이지 구현 (TMap 지도 성능 분석기, 장소 선택 기능 개발기)',
+            '모노레포를 사용한 공통 인터페이스, 공통 컴포넌트 등 공통 패키지 관리',
+            '리팩토링 전후 동일 결과를 보장하기 위해 cypress 사용한 e2e 테스트 코드 작성',
+            'FE/BE 개발을 병렬적으로 진행해 개발 생산성을 향상시키기 위한 MSW 사용',
+            '예기치 않은 UI 변경을 예방하기 위한 시각적 회귀 테스트 도입',
+            '프로젝트 팀장으로써 프로젝트 기획, 디자인 총괄 및 일정 관리',
+            '개발 일지 작성 문화 도입으로 팀 내 6주간 약 70개의 개발 일지 작성',
+          ]}
+        />
       </Section>
       <Section title='Skills'>
         <Skills />

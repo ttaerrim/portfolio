@@ -1,39 +1,41 @@
+import Link from 'next/link';
+
 type SectionProps = {
   title: string;
   description: string;
-  githubUrl: string;
   url: string;
   stacks: string[];
   details: string[];
 };
 
-export default function Project({ title, description, githubUrl, url, stacks, details }: SectionProps) {
+export default function Project({ title, description, url, stacks, details }: SectionProps) {
   return (
-    <article>
-      <div className='flex mt-6 items-center'>
-        <h3 className='text-base text-main-blue font-semibold px-1 bg-sub-blue rounded'>{title}</h3>
-        <time className='ml-2 text-sm text-slate-400'>2022.03 ~ 2022.04</time>
+    <article className='flex flex-col gap-1'>
+      <h3 className='text-3xl font-semibold'>
+        <Link href={url} className='underline cursor-pointer'>
+          {title}
+        </Link>
+      </h3>
+      <div className='text-sm font-light text-slate-400 flex gap-1'>
+        <time>2022.03 ~ 2022.04</time>
+        {'|'}
+        <span>사이드 프로젝트</span>
       </div>
-      <section className='bg-sub-blue rounded p-4 gap-4 mt-4 cursor-pointer hover:border-main-blue hover:border'>
-        <div>
-          <p className='font-semibold'>{description}</p>
-          <p>
-            <span className='font-semibold'>github url </span>|{githubUrl}
-          </p>
-          <p>
-            <span className='font-semibold'>배포 링크 </span>|{url}
-          </p>
-          <p>
-            <span className='font-semibold'>사용 기술 </span>|{stacks.join(', ')}
-          </p>
-        </div>
-        <ul className='list-disc mt-3 ml-5 text-sm'>
-          {details.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-        <p className='mt-4 text-sm text-slate-400 ml-auto text-end underline'>자세히 보기</p>
-      </section>
+      <p className='font-semibold'>{description}</p>
+      <div className='flex gap-1 text-sm'>
+        {stacks.map((stack) => (
+          <span key={stack} className='text-main-blue bg-sub-blue rounded px-1 '>
+            {stack}
+          </span>
+        ))}
+      </div>
+
+      <ul className='list-disc mt-3 ml-5 text-sm'>
+        {details.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <p className='mt-4 text-sm text-slate-400 underline'>자세히 보기</p>
     </article>
   );
 }
