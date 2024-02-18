@@ -28,6 +28,21 @@ export default function Introduce() {
     return `${years}년 ${months}개월`;
   };
 
+  const PORTFOLIOS = [
+    {
+      title: '모락',
+      startDate: '2023-11-01',
+      endDate: '2023-12-20',
+      description: '네이버 부스트캠프 내 모각코 모집/관리 플랫폼',
+    },
+    {
+      title: 'For Minutes',
+      startDate: '2021-03-01',
+      endDate: '2021-10-01',
+      description: '인공지능 회의록 요약 서비스',
+    },
+  ];
+
   return (
     <div className='bg-white flex flex-col justify-center items-center px-12 py-12 pb-20 gap-12 max-w-6xl m-auto rounded-bl-[7rem] rounded-br-[7rem]	'>
       <IntroduceBox />
