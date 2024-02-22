@@ -34,9 +34,9 @@ export default function Introduce() {
   const printPeriod = (period: string[], showYM = true) => {
     const [start, end] = period;
 
-    return `${format(new Date(start), 'YYYY.MM')} ~ ${end ? format(new Date(end), 'YYYY.MM') : 'now'} ${
-      showYM ? `(${calcPeriod(period)})` : ''
-    }`;
+    return `${format(new Date(start), 'YYYY.MM', 'en-us')} ~ ${
+      end ? format(new Date(end), 'YYYY.MM', 'en-us') : 'now'
+    } ${showYM ? `(${calcPeriod(period)})` : ''}`;
   };
 
   const calcPeriod = (period: string[]) => {
