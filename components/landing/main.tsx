@@ -19,18 +19,14 @@ export default function Landing() {
         <div className='w-full flex flex-col	items-center'>
           <div className='p-10'>
             <Link href='portfolio'>
+              <span>{`<`}</span>
               <WaveText>portfolio</WaveText>
+              <span>{` />`}</span>
             </Link>
           </div>
-          <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
+          {/* <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
             <Link href='portfolio'>{`<Portfolio />`}</Link>
-          </div>
-          <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center text-4xl'>
-            Taerim Lee
-          </div>
-          <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[-5%]'>
-            Challenge & Brilliant
-          </div>
+          </div> */}
         </div>
         <div className='w-full relative'>
           <IC_TWINKLE width={60} height={60} className='absolute top-[30%] left-[-3.75rem]' />
