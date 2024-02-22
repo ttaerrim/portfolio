@@ -6,9 +6,10 @@ type SectionProps = {
   url: string;
   stacks: string[];
   details: string[];
+  period: string;
 };
 
-export default function Project({ title, description, url, stacks, details }: SectionProps) {
+export default function Project({ title, description, url, stacks, details, period }: SectionProps) {
   return (
     <article className='flex flex-col gap-1'>
       <h3 className='text-3xl font-semibold'>
@@ -16,15 +17,15 @@ export default function Project({ title, description, url, stacks, details }: Se
           {title}
         </Link>
       </h3>
-      <div className='text-sm font-light text-slate-400 flex gap-1'>
-        <time>2022.03 ~ 2022.04</time>
+      <div className='text-sm font-light flex gap-1'>
+        <time>{period}</time>
         {'|'}
         <span>사이드 프로젝트</span>
       </div>
       <p className='font-semibold'>{description}</p>
       <div className='flex gap-1 text-sm'>
         {stacks.map((stack) => (
-          <span key={stack} className='text-main-blue bg-sub-blue rounded px-1 '>
+          <span key={stack} className='text-main-blue bg-sub-blue rounded px-1 text-xs'>
             {stack}
           </span>
         ))}

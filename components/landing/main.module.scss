@@ -1,0 +1,37 @@
+.container {
+  min-width: 500px;
+  margin: 10% auto;
+  text-align: center;
+  background: transparent;
+  outline: none;
+  position: relative;
+  border: 2px solid #111;
+  padding: 15px 50px;
+  overflow: hidden;
+}
+
+.text {
+  transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  overflow: hidden;
+}
+
+.text:hover:before {
+  opacity: 1;
+  transform: translateY(0, 0);
+}
+.text:before {
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(-100%, 0);
+}
+
+.text:hover span {
+  opacity: 0;
+  transform: translateY(100%, 0);
+}
+.text span {
+  text-transform: uppercase;
+}

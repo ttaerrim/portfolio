@@ -2,6 +2,7 @@ import { pointFont } from '@/app/font';
 import IC_TWINKLE from '@/assets/twinkle.svg?svgr';
 import Link from 'next/link';
 import { hack } from '../../app/font';
+import * as styles from './main.module.scss';
 
 export default function Landing() {
   return (
@@ -17,7 +18,18 @@ export default function Landing() {
         </div>
         <div className='w-full flex flex-col	items-center'>
           <div className='p-10'>
-            <Link href='portfolio'>{`<Portfolio />`}</Link>
+            <Link href='portfolio' className={styles.container}>
+              <button data-hover='Portfolio' className={styles.text}>
+                <span>Portfolio</span>
+              </button>
+            </Link>
+            {/* <Link href='portfolio' className='relative overflow-hidden inline-flex group'>
+             
+              <span className='text-white group-hover:text-black group-hover:transition hover:translate-y-full'>
+                Portfolio
+              </span>
+              
+            </Link> */}
           </div>
           <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
             <Link href='portfolio'>{`<Portfolio />`}</Link>
