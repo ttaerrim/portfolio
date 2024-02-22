@@ -8,6 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        wavy: 'wavy 1.3s ease',
+      },
+      keyframes: {
+        wavy: {
+          '0%': { top: '0px' },
+          '50%': { top: '-15px' },
+          '100%': { top: '0px' },
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

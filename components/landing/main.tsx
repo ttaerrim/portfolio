@@ -1,10 +1,40 @@
+'use client';
 import { pointFont } from '@/app/font';
 import IC_TWINKLE from '@/assets/twinkle.svg?svgr';
 import Link from 'next/link';
 import { hack } from '../../app/font';
 import * as styles from './main.module.scss';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Landing() {
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false);
+  const updateText = (text: string) => {
+    if (isAnimationPlaying) return;
+
+    let delay = 0;
+    const aniText = document.getElementById('animated');
+
+    if (aniText) {
+      aniText.innerHTML = text
+        .split('')
+        .map((letter: string) => {
+          return `<span>` + letter + `</span>`;
+        })
+        .join('');
+
+      Array.from(aniText.children).forEach((span, index) => {
+        setTimeout(() => {
+          span.className += 'animate-wavy relative top-0 left-0';
+        }, index * 60 + delay);
+      });
+    }
+  };
+
+  const waveText = () => {
+    setIsAnimationPlaying(true);
+    updateText('portfolio');
+  };
+
   return (
     <div className={`bg-main-blue text-sub-yellow pb-16 h-full ${hack.className}`}>
       <p className={`pt-4 text-center ${pointFont.className} text-[10vw]`}>TTAERRIM</p>
@@ -18,18 +48,11 @@ export default function Landing() {
         </div>
         <div className='w-full flex flex-col	items-center'>
           <div className='p-10'>
-            <Link href='portfolio' className={styles.container}>
-              <button data-hover='Portfolio' className={styles.text}>
-                <span>Portfolio</span>
-              </button>
-            </Link>
-            {/* <Link href='portfolio' className='relative overflow-hidden inline-flex group'>
-             
-              <span className='text-white group-hover:text-black group-hover:transition hover:translate-y-full'>
-                Portfolio
+            <Link href='portfolio'>
+              <span id='animated' onMouseEnter={waveText} onMouseOut={() => setIsAnimationPlaying(false)}>
+                portfolio
               </span>
-              
-            </Link> */}
+            </Link>
           </div>
           <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
             <Link href='portfolio'>{`<Portfolio />`}</Link>
