@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { pretendard } from './font';
+import Cursor from '@/components/ui/Cursor';
 
 export const metadata: Metadata = {
   title: "ttaerrim's portfolio",
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className={`${pretendard.className} h-dvh bg-main-blue`}>{children}</body>
+      <body className={`${pretendard.className} h-dvh bg-main-blue`}>
+        {children}
+        <Cursor />
+      </body>
     </html>
   );
 }

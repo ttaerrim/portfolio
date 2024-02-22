@@ -18,6 +18,13 @@
   }
 }
 
+* {
+  cursor: none;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
+}
+
+@media (pointer: none), (pointer: coarse) {
 }

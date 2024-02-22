@@ -13,7 +13,7 @@ export default function Project({ title, description, url, stacks, details, peri
   return (
     <article className='flex flex-col gap-1'>
       <h3 className='text-3xl font-semibold'>
-        <Link href={url} className='underline cursor-pointer'>
+        <Link href={url} className='underline'>
           {title}
         </Link>
       </h3>
