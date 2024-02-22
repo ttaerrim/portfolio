@@ -1,40 +1,10 @@
-'use client';
 import { pointFont } from '@/app/font';
 import IC_TWINKLE from '@/assets/twinkle.svg?svgr';
 import Link from 'next/link';
 import { hack } from '../../app/font';
-import * as styles from './main.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import WaveText from '../ui/WaveText';
 
 export default function Landing() {
-  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false);
-  const updateText = (text: string) => {
-    if (isAnimationPlaying) return;
-
-    let delay = 0;
-    const aniText = document.getElementById('animated');
-
-    if (aniText) {
-      aniText.innerHTML = text
-        .split('')
-        .map((letter: string) => {
-          return `<span>` + letter + `</span>`;
-        })
-        .join('');
-
-      Array.from(aniText.children).forEach((span, index) => {
-        setTimeout(() => {
-          span.className += 'animate-wavy relative top-0 left-0';
-        }, index * 60 + delay);
-      });
-    }
-  };
-
-  const waveText = () => {
-    setIsAnimationPlaying(true);
-    updateText('portfolio');
-  };
-
   return (
     <div className={`bg-main-blue text-sub-yellow pb-16 h-full ${hack.className}`}>
       <p className={`pt-4 text-center ${pointFont.className} text-[10vw]`}>TTAERRIM</p>
@@ -49,9 +19,7 @@ export default function Landing() {
         <div className='w-full flex flex-col	items-center'>
           <div className='p-10'>
             <Link href='portfolio'>
-              <span id='animated' onMouseEnter={waveText} onMouseOut={() => setIsAnimationPlaying(false)}>
-                portfolio
-              </span>
+              <WaveText>portfolio</WaveText>
             </Link>
           </div>
           <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
