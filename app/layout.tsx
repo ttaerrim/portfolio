@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body className={`${pretendard.className} h-dvh bg-main-blue`}>
-        {/* <Cursor /> */}
+        <Cursor />
         {children}
       </body>
     </html>

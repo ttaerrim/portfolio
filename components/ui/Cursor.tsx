@@ -5,11 +5,11 @@ export default function Cursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
 
   const setCursor = (e: Event) => {
-    const { pageX, pageY } = e as MouseEvent;
+    const { clientX, clientY } = e as MouseEvent;
 
     if (cursorRef.current) {
-      cursorRef.current.style.left = pageX + 'px';
-      cursorRef.current.style.top = pageY + 'px';
+      cursorRef.current.style.left = clientX + 'px';
+      cursorRef.current.style.top = clientY + 'px';
     }
   };
 
@@ -23,5 +23,10 @@ export default function Cursor() {
     };
   });
 
-  return <div ref={cursorRef} className='fixed w-5 h-5 rounded-full mix-blend-difference bg-white opacity-70'></div>;
+  return (
+    <div
+      ref={cursorRef}
+      className='fixed w-5 h-5 rounded-full mix-blend-difference bg-white opacity-70 cursor-none'
+    ></div>
+  );
 }
