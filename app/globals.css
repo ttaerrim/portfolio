@@ -22,6 +22,15 @@
   cursor: none;
 }
 
+::-moz-selection {
+  background: rgb(169 190 255);
+  color: #a9a9a9;
+}
+::selection {
+  background: rgb(135, 159, 233);
+  color: #ffffff;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
 }
