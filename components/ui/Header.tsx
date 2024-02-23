@@ -15,7 +15,7 @@ export default function Header() {
     if (previousTimeRef.current != undefined && width) {
       const deltaTime = Math.floor(time - previousTimeRef.current);
 
-      setCount((prevCount) => (prevCount + deltaTime * 0.2) % width);
+      setCount((prevCount) => (prevCount + deltaTime * 0.1) % width);
     }
 
     previousTimeRef.current = time;
