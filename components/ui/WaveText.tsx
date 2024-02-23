@@ -24,7 +24,7 @@ export default function WaveText({ children, className = '' }: WaveTextProps) {
 
       Array.from(aniText.children).forEach((span, index) => {
         setTimeout(() => {
-          span.className += 'animate-wavy relative top-0 left-0';
+          span.className += 'animate-text-rainbow relative top-0 left-0';
         }, index * 60 + delay);
       });
     }

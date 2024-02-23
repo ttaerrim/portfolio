@@ -15,6 +15,7 @@ const config: Config = {
         wavy: 'wavy 1.3s ease ',
         'cursor-blink': 'cursor-blink 1s ease infinite',
         loopText: 'loop 7s linear infinite',
+        'text-rainbow': 'text-rainbow 1.3s linear;',
       },
       keyframes: {
         wavy: {
@@ -30,6 +31,46 @@ const config: Config = {
         loop: {
           from: { transform: 'translateX(0%)' },
           to: { transform: 'translateX(-100%)' },
+        },
+        'text-rainbow': {
+          '100%,0%': {
+            color: 'rgba(255,0,0,0.7)',
+            top: '0px',
+          },
+          '8%': {
+            color: 'rgba(255,127,0,0.7)',
+          },
+          '16%': {
+            color: 'rgba(255,255,0,0.7)',
+          },
+          '25%': {
+            color: 'rgba(127,255,0,0.7)',
+          },
+          '33%': {
+            color: 'rgba(0,255,0,0.7)',
+          },
+          '41%': {
+            color: 'rgba(0,255,127,0.7)',
+          },
+          '50%': {
+            color: 'rgba(0,255,255,0.7)',
+            top: '-15px',
+          },
+          '58%': {
+            color: 'rgba(0,127,255,0.7)',
+          },
+          '66%': {
+            color: 'rgba(0,0,255,0.7)',
+          },
+          '75%': {
+            color: 'rgba(127,0,255,0.7)',
+          },
+          '83%': {
+            color: 'rgba(255,0,255,0.7)',
+          },
+          '91%': {
+            color: 'rgba(255,0,127,0.7)',
+          },
         },
       },
       backgroundImage: {
