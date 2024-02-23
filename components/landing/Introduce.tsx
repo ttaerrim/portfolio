@@ -4,7 +4,10 @@ import Section from './Section';
 import Skills from './Skills';
 import { format } from '@formkit/tempo';
 
-export default function Introduce() {
+type IntroduceProps = {
+  portfolioRef: React.RefObject<HTMLDivElement>;
+};
+export default function Introduce({ portfolioRef }: IntroduceProps) {
   const WORKS = [{ name: '레드브릭', position: 'FrontEnd Engineer', period: ['2022-04-25', '2023-07-24'] }];
 
   const EDUCATION = [
@@ -84,7 +87,10 @@ export default function Introduce() {
   ];
 
   return (
-    <div className='bg-white flex flex-col justify-center items-center px-12 py-12 pb-20 gap-12 max-w-6xl m-auto rounded-bl-[7rem] rounded-br-[7rem]	'>
+    <div
+      className='bg-white flex flex-col justify-center items-center px-12 py-12 pb-20 gap-12 max-w-6xl m-auto rounded-bl-[7rem] rounded-br-[7rem]'
+      ref={portfolioRef}
+    >
       <IntroduceBox />
       <Section title='Career'>
         <div className='flex flex-col gap-6'>

@@ -4,7 +4,10 @@ import Link from 'next/link';
 import { hack } from '../../app/font';
 import WaveText from '../ui/WaveText';
 
-export default function Landing() {
+type Landing = {
+  onClickPortfolio: () => void;
+};
+export default function Landing({ onClickPortfolio }) {
   return (
     <div className={`bg-main-blue text-sub-yellow pb-16 h-full ${hack.className}`}>
       <p className={`pt-4 text-center ${pointFont.className} text-[10vw]`}>TTAERRIM</p>
@@ -18,11 +21,11 @@ export default function Landing() {
         </div>
         <div className='w-full flex flex-col	items-center'>
           <div className='p-10'>
-            <Link href='portfolio'>
+            <button type='button' onClick={onClickPortfolio}>
               <span>{`<`}</span>
               <WaveText>portfolio</WaveText>
               <span>{` />`}</span>
-            </Link>
+            </button>
           </div>
           {/* <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
             <Link href='portfolio'>{`<Portfolio />`}</Link>
