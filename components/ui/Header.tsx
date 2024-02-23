@@ -29,13 +29,16 @@ export default function Header() {
 
   return (
     <div
-      className={`justify-center item-center w-full bg-main-blue text-center ${pointFont.className} text-[8vw] fixed text-white flex-nowrap overflow-hidden z-20`}
+      className={`justify-center item-center w-full bg-transparent backdrop-blur-sm	 text-center ${pointFont.className} text-[8vw] fixed text-white flex-nowrap overflow-hidden z-20`}
+      style={{
+        '-webkit-text-stroke': `1px #274CBD`,
+      }}
     >
       <div className={`flex flex-nowrap`} style={{ transform: `translateX(-${count}px)` }}>
-        <p className='text-nowrap pr-6' ref={textRef}>
+        <p className='whitespace-pre pr-6' ref={textRef}>
           {text}
         </p>
-        <p className='text-nowrap pr-6'>{text}</p>
+        <p className='whitespace-pre pr-6'>{text}</p>
       </div>
     </div>
   );
