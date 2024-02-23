@@ -8,14 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        cursor: 'width, height, mix-blend-mode',
+      },
       animation: {
-        wavy: 'wavy 1.3s ease',
+        wavy: 'wavy 1.3s ease ',
+        'cursor-blink': 'cursor-blink 1s ease infinite',
       },
       keyframes: {
         wavy: {
           '0%': { top: '0px' },
           '50%': { top: '-15px' },
           '100%': { top: '0px' },
+        },
+        'cursor-blink': {
+          '0%': { transform: 'scale(1.0)' },
+          '50%': { transform: 'scale(1.3)' },
+          '100%': { transform: 'scale(1.0)' },
         },
       },
       backgroundImage: {
