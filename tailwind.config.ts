@@ -14,6 +14,7 @@ const config: Config = {
       animation: {
         wavy: 'wavy 1.3s ease ',
         'cursor-blink': 'cursor-blink 1s ease infinite',
+        loopText: 'loop 7s linear infinite',
       },
       keyframes: {
         wavy: {
@@ -25,6 +26,10 @@ const config: Config = {
           '0%': { transform: 'scale(1.0)' },
           '50%': { transform: 'scale(1.3)' },
           '100%': { transform: 'scale(1.0)' },
+        },
+        loop: {
+          from: { transform: 'translateX(0%)' },
+          to: { transform: 'translateX(-100%)' },
         },
       },
       backgroundImage: {

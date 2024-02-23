@@ -1,17 +1,16 @@
 import { pointFont } from '@/app/font';
 import IC_TWINKLE from '@/assets/twinkle.svg?svgr';
-import Link from 'next/link';
 import { hack } from '../../app/font';
 import WaveText from '../ui/WaveText';
 
-type Landing = {
+type LandingProps = {
   onClickPortfolio: () => void;
 };
-export default function Landing({ onClickPortfolio }) {
+
+export default function Landing({ onClickPortfolio }: LandingProps) {
   return (
-    <div className={`bg-main-blue text-sub-yellow pb-16 h-full ${hack.className}`}>
-      <p className={`pt-4 text-center ${pointFont.className} text-[10vw]`}>TTAERRIM</p>
-      <div className='flex flex-col justify-center items-center mx-auto my-0 w-9/12 max-w-4xl text-3xl'>
+    <div className={`bg-main-blue text-sub-yellow pb-16 h-full ${hack.className} flex justify-center items-center`}>
+      <div className='flex flex-col h-full justify-center items-center mx-auto my-0 w-9/12 max-w-4xl text-3xl'>
         <div className='w-full relative'>
           <p
             className={`flex justify-center items-center w-full relative after:content-[''] after:text-red-500 after:w-full after:h-0.5 after:inline-block after:bg-sub-yellow after:ml-4`}
