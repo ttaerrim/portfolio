@@ -5,7 +5,7 @@ import Skills from './Skills';
 import { format } from '@formkit/tempo';
 
 type IntroduceProps = {
-  portfolioRef: React.RefObject<HTMLDivElement>;
+  portfolioRef?: React.RefObject<HTMLDivElement>;
 };
 export default function Introduce({ portfolioRef }: IntroduceProps) {
   const WORKS = [{ name: '레드브릭', position: 'FrontEnd Engineer', period: ['2022-04-25', '2023-07-24'] }];
