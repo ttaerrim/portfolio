@@ -1,4 +1,5 @@
 'use client';
+import { isMobile } from '@/utils/isMobile';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Cursor() {
@@ -50,13 +51,15 @@ export default function Cursor() {
   }, []);
 
   return (
-    <div
-      ref={cursorRef}
-      className={`${
-        hovered ? 'w-7 h-7 opacity-100 animate-cursor-blink' : ''
-      } w-5 h-5 fixed rounded-full mix-blend-difference bg-white opacity-70 cursor-none transition-cursor ${
-        clicked ? '!mix-blend-color-dodge	' : ''
-      }`}
-    ></div>
+    !isMobile && (
+      <div
+        ref={cursorRef}
+        className={`${
+          hovered ? 'w-7 h-7 opacity-100 animate-cursor-blink' : ''
+        } w-5 h-5 fixed rounded-full mix-blend-difference bg-white opacity-70 cursor-none transition-cursor ${
+          clicked ? '!mix-blend-color-dodge	' : ''
+        }`}
+      ></div>
+    )
   );
 }
