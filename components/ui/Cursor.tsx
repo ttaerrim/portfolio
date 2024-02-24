@@ -43,8 +43,8 @@ export default function Cursor() {
     handleLinkCursor();
 
     return () => {
-      removeEventListener('scroll', setCursor);
-      removeEventListener('mousemove', setCursor);
+      document.removeEventListener('scroll', setCursor);
+      document.removeEventListener('mousemove', setCursor);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
     };
