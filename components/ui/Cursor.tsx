@@ -1,6 +1,6 @@
 'use client';
-import { isMobile } from '@/utils/isMobile';
 import { useEffect, useRef, useState } from 'react';
+import { isMobileOnly } from 'react-device-detect';
 
 export default function Cursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -51,12 +51,12 @@ export default function Cursor() {
   }, []);
 
   return (
-    !isMobile && (
+    !isMobileOnly && (
       <div
         ref={cursorRef}
         className={`${
           hovered ? 'w-7 h-7 opacity-100 animate-cursor-blink' : ''
-        } w-5 h-5 fixed rounded-full mix-blend-difference bg-white opacity-70 cursor-none transition-cursor ${
+        } w-5 h-5 fixed rounded-full mix-blend-difference bg-white opacity-70 cursor-none transition-cursor z-50 ${
           clicked ? '!mix-blend-color-dodge	' : ''
         }`}
       ></div>
