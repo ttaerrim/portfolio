@@ -11,7 +11,7 @@ export default function Light() {
     const calcOpacity = () => {
       const totalHeight = screenRef.current?.clientHeight;
       if (totalHeight) {
-        const value = (totalHeight / 3 - window.scrollY) / (totalHeight / 3);
+        const value = ((totalHeight / 5 - window.scrollY) / (totalHeight / 5)) * 2;
         return value < 0 ? 0 : value;
       }
       return 0;
@@ -26,8 +26,8 @@ export default function Light() {
   }, []);
 
   return (
-    <div className='h-[300vh]' ref={screenRef}>
-      <div className='bg-black w-full h-screen text-white'>
+    <div className='h-[500vh]' ref={screenRef}>
+      <div className='bg-black w-full h-[200vh] text-white'>
         <div
           className='flex h-full justify-center items-center flex-col fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4'
           ref={scrollRef}
