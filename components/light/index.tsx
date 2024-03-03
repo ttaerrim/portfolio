@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { hack } from '@/app/font';
 import String from './String';
+import IC_ARROW from '@/assets/double-arrow.svg';
 
 type LightProps = {
   handleBackground: (isShow: boolean) => void;
@@ -45,16 +46,7 @@ export default function Light({ handleBackground }: LightProps) {
           ref={scrollRef}
         >
           <p className={`text-[3vw] ${hack.className}`}>Scroll Down!</p>
-          <svg
-            className='fill-white w-[10vw] h-[10vw] rotate-180'
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-          >
-            <path d='m7.293 15.293 1.414 1.414L12 13.414l3.293 3.293 1.414-1.414L12 10.586l-4.707 4.707z' />
-            <path d='m7.293 11.293 1.414 1.414L12 9.414l3.293 3.293 1.414-1.414L12 6.586l-4.707 4.707z' />
-          </svg>
+          <IC_ARROW viewBox='0 0 24 24' className='fill-white w-[10vw] h-[10vw] rotate-180' />
         </div>
       </div>
       {!isStringPulled && <String handleStringPulled={handleStringPulled} />}
