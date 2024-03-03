@@ -6,7 +6,7 @@ export default function String() {
   const coverRef = useRef<HTMLDivElement>(null);
   const stringRef = useRef<HTMLDivElement>(null);
   const screenRef = useRef<HTMLDivElement>(null);
-  const stringSvgRef = document.querySelector('#string');
+  const stringSvgRef = useRef<any>(null);
 
   useEffect(() => {
     const calcTop = () => {
@@ -60,8 +60,8 @@ export default function String() {
     return value > 10 ? 10 : value;
   };
   const clickString = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isMouseDown && e.clientY > mousePosition.y && stringSvgRef) {
-      const string = stringSvgRef as HTMLElement;
+    if (isMouseDown && e.clientY > mousePosition.y && stringSvgRef.current) {
+      const string = stringSvgRef.current;
       const diff = calcPosition(e.clientY, mousePosition.y);
       string.style.top = `${20 + diff}%`;
 
@@ -72,8 +72,8 @@ export default function String() {
   };
 
   useEffect(() => {
-    if (!isMouseDown && stringSvgRef) {
-      const string = stringSvgRef as HTMLElement;
+    if (!isMouseDown && stringSvgRef.current) {
+      const string = stringSvgRef.current;
       string.style.top = '20%';
     }
   }, [isMouseDown, stringSvgRef]);
@@ -94,6 +94,7 @@ export default function String() {
         <IC_STRING
           className='[&>path]:fill-white fixed top-[20%] left-1/2 -translate-x-2/4 -translate-y-2/4 transition-all'
           id='string'
+          ref={stringSvgRef}
         />
       </div>
     </div>
