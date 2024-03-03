@@ -39,7 +39,7 @@ export default function Cover({ handleIntro }: CoverProps) {
       setIsEventRunning(false);
       handleIntro(true);
       document.body.style.overflow = 'auto';
-    }, 1000);
+    }, 700);
   };
 
   const trackMouse = useCallback(

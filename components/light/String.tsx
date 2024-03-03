@@ -6,6 +6,7 @@ type StringProps = {
   handleStringPulled: (isPulled: boolean) => void;
 };
 
+const STRING_TOP_POSITION = 20;
 export default function String({ handleStringPulled }: StringProps) {
   const coverRef = useRef<HTMLDivElement>(null);
   const stringRef = useRef<HTMLDivElement>(null);
@@ -18,7 +19,7 @@ export default function String({ handleStringPulled }: StringProps) {
       const screenHeight = screenRef.current?.clientHeight;
       if (screenHeight) {
         const value = (window.scrollY - screenHeight) / 5;
-        return value > 0 ? value + 30 : 0;
+        return value > 0 ? value + STRING_TOP_POSITION : 0;
       }
       return 0;
     };
@@ -42,7 +43,7 @@ export default function String({ handleStringPulled }: StringProps) {
           document.body.style.overflow = 'hidden';
         } else {
           coverRef.current.style.display = 'block';
-          coverRef.current.style.top = `30%`;
+          coverRef.current.style.top = `${STRING_TOP_POSITION}%`;
         }
       }
     };
@@ -75,7 +76,7 @@ export default function String({ handleStringPulled }: StringProps) {
     if (isMouseDown && e.clientY > mousePosition.y && stringSvgRef.current) {
       const string = stringSvgRef.current;
       const diff = calcPosition(e.clientY, mousePosition.y);
-      string.style.top = `${30 + diff}%`;
+      string.style.top = `${STRING_TOP_POSITION + diff}%`;
 
       if (diff > 9) {
         setIsOnlyStringPulled(true);
@@ -86,12 +87,14 @@ export default function String({ handleStringPulled }: StringProps) {
   useEffect(() => {
     if (!isMouseDown && stringSvgRef.current) {
       const string = stringSvgRef.current;
-      string.style.top = '30%';
+      string.style.top = `${STRING_TOP_POSITION}%`;
     }
   }, [isMouseDown, stringSvgRef]);
 
   useEffect(() => {
-    handleStringPulled(isOnlyStringPulled && !isMouseDown);
+    setTimeout(() => {
+      handleStringPulled(isOnlyStringPulled && !isMouseDown);
+    }, 300);
   }, [isOnlyStringPulled, isMouseDown, handleStringPulled]);
 
   return (
@@ -108,7 +111,7 @@ export default function String({ handleStringPulled }: StringProps) {
         onMouseUp={() => setIsMouseDown(false)}
       >
         <IC_STRING
-          className='invisible [&>path]:fill-white fixed top-[30%] left-1/2 -translate-x-2/4 -translate-y-2/4 transition-all'
+          className={`invisible [&>path]:fill-white fixed top-[${STRING_TOP_POSITION}%] left-1/2 -translate-x-2/4 -translate-y-2/4 transition-all`}
           id='string'
           ref={stringSvgRef}
         />
