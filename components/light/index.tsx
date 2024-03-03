@@ -1,102 +1,71 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import IC_STRING from '@/assets/light-string.svg';
+import { hack } from '@/app/font';
+import String from './String';
 
-export default function String() {
-  const coverRef = useRef<HTMLDivElement>(null);
-  const stringRef = useRef<HTMLDivElement>(null);
+type LightProps = {
+  handleBackground: (isShow: boolean) => void;
+};
+
+export default function Light({ handleBackground }: LightProps) {
   const screenRef = useRef<HTMLDivElement>(null);
-  const stringSvgRef = useRef<any>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
+  const [isStringPulled, setIsStringPulled] = useState(false);
+
+  const handleStringPulled = (isPulled: boolean) => {
+    setIsStringPulled(isPulled);
+    handleBackground(isPulled);
+  };
 
   useEffect(() => {
-    const calcTop = () => {
-      const screenHeight = screenRef.current?.clientHeight;
-      if (screenHeight) {
-        const value = (window.scrollY - screenHeight) / 5;
-        return value > 0 ? value + 20 : 0;
+    const calcOpacity = () => {
+      const totalHeight = screenRef.current?.clientHeight;
+      if (totalHeight) {
+        const value = ((totalHeight / 5 - window.scrollY) / (totalHeight / 5)) * 2;
+        return value < 0 ? 0 : value;
       }
       return 0;
     };
-
     const scrollHandler = () => {
-      if (coverRef.current && screenRef.current && stringRef.current) {
-        if (screenRef.current.clientHeight > window.scrollY) {
-          coverRef.current.style.display = 'none';
-          stringRef.current.style.display = 'none';
-
-          return;
-        }
-        stringRef.current.style.display = 'block';
-
-        const per = calcTop();
-        if (per > 0 && per < 100) {
-          coverRef.current.style.display = 'block';
-          coverRef.current.style.top = `${per}%`;
-        } else if (per > 100) {
-          coverRef.current.style.display = 'none';
-          document.body.style.overflow = 'hidden';
-        } else {
-          coverRef.current.style.display = 'block';
-          coverRef.current.style.top = `20%`;
-        }
+      if (scrollRef.current) {
+        scrollRef.current.style.opacity = `${calcOpacity()}`;
       }
     };
-
-    scrollTo(0, 0);
-
     document.addEventListener('scroll', scrollHandler);
+    return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
 
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-
-  const onMouseDownString = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsMouseDown(true);
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
-  const calcPosition = (mouseYPosition: number, prevMouseYPosition: number) => {
-    const value = (mouseYPosition - prevMouseYPosition) / 5;
-    return value > 10 ? 10 : value;
-  };
-  const clickString = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isMouseDown && e.clientY > mousePosition.y && stringSvgRef.current) {
-      const string = stringSvgRef.current;
-      const diff = calcPosition(e.clientY, mousePosition.y);
-      string.style.top = `${20 + diff}%`;
-
-      if (diff > 9) {
-        // 다음 스텝
-      }
-    }
-  };
-
   useEffect(() => {
-    if (!isMouseDown && stringSvgRef.current) {
-      const string = stringSvgRef.current;
-      string.style.top = '20%';
+    if (isStringPulled && scrollRef.current) {
+      scrollTo(0, 0);
+      document.body.style.overflow = 'auto';
+      scrollRef.current.style.display = 'none';
     }
-  }, [isMouseDown, stringSvgRef]);
+  }, [isStringPulled]);
 
   return (
-    <div className='flex justify-center bg-black w-full h-screen text-white' ref={screenRef}>
-      <div
-        className='w-screen h-2/3 fixed top-[20%] left-1/2 -translate-x-2/4 -translate-y-2/4 z-10 bg-black hidden'
-        ref={coverRef}
-      />
-      <div
-        ref={stringRef}
-        className='relative top-[-50%] w-[50vw] h-[100vh]'
-        onMouseMove={clickString}
-        onMouseDown={onMouseDownString}
-        onMouseUp={() => setIsMouseDown(false)}
-      >
-        <IC_STRING
-          className='[&>path]:fill-white fixed top-[20%] left-1/2 -translate-x-2/4 -translate-y-2/4 transition-all'
-          id='string'
-          ref={stringSvgRef}
-        />
+    <div className='h-[500vh] relative' ref={screenRef}>
+      <div ref={pinRef} />
+      <div className='bg-black w-full h-[200vh] text-white'>
+        <div
+          className='flex h-full justify-center items-center flex-col fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4'
+          ref={scrollRef}
+        >
+          <p className={`text-[3vw] ${hack.className}`}>Scroll Down!</p>
+          <svg
+            className='fill-white w-[10vw] h-[10vw] rotate-180'
+            xmlns='http://www.w3.org/2000/svg'
+            width='24'
+            height='24'
+            viewBox='0 0 24 24'
+          >
+            <path d='m7.293 15.293 1.414 1.414L12 13.414l3.293 3.293 1.414-1.414L12 10.586l-4.707 4.707z' />
+            <path d='m7.293 11.293 1.414 1.414L12 9.414l3.293 3.293 1.414-1.414L12 6.586l-4.707 4.707z' />
+          </svg>
+        </div>
       </div>
+      {!isStringPulled && <String handleStringPulled={handleStringPulled} />}
     </div>
   );
 }
