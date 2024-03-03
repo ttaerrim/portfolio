@@ -27,7 +27,7 @@ export default function Header() {
     return () => cancelAnimationFrame(requestRef.current);
   }, []);
 
-  const addedStyle = { '-webkit-text-stroke': `1px #274CBD` } as React.CSSProperties;
+  const addedStyle = { WebkitTextStroke: `1px #274CBD` } as React.CSSProperties;
 
   return (
     <div
