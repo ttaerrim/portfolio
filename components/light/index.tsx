@@ -64,6 +64,10 @@ export default function String() {
       const string = stringSvgRef as HTMLElement;
       const diff = calcPosition(e.clientY, mousePosition.y);
       string.style.top = `${20 + diff}%`;
+
+      if (diff > 9) {
+        // 다음 스텝
+      }
     }
   };
 
@@ -88,7 +92,7 @@ export default function String() {
         onMouseUp={() => setIsMouseDown(false)}
       >
         <IC_STRING
-          className='[&>path]:fill-white fixed top-[20%] left-1/2 -translate-x-2/4 -translate-y-2/4'
+          className='[&>path]:fill-white fixed top-[20%] left-1/2 -translate-x-2/4 -translate-y-2/4 transition-all'
           id='string'
         />
       </div>

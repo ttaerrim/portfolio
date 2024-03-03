@@ -27,12 +27,12 @@ export default function Header() {
     return () => cancelAnimationFrame(requestRef.current);
   }, []);
 
+  const addedStyle = { '-webkit-text-stroke': `1px #274CBD` } as React.CSSProperties;
+
   return (
     <div
       className={`justify-center item-center w-full bg-transparent backdrop-blur-sm	 text-center ${pointFont.className} text-[8vw] fixed text-white flex-nowrap overflow-hidden z-20`}
-      style={{
-        '-webkit-text-stroke': `1px #274CBD`,
-      }}
+      style={addedStyle}
     >
       <div className={`flex flex-nowrap`} style={{ transform: `translateX(-${count}px)` }}>
         <p className='whitespace-pre pr-6' ref={textRef}>
