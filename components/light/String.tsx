@@ -18,7 +18,7 @@ export default function String({ handleStringPulled }: StringProps) {
       const screenHeight = screenRef.current?.clientHeight;
       if (screenHeight) {
         const value = (window.scrollY - screenHeight) / 5;
-        return value > 0 ? value + 20 : 0;
+        return value > 0 ? value + 30 : 0;
       }
       return 0;
     };
@@ -42,14 +42,21 @@ export default function String({ handleStringPulled }: StringProps) {
           document.body.style.overflow = 'hidden';
         } else {
           coverRef.current.style.display = 'block';
-          coverRef.current.style.top = `20%`;
+          coverRef.current.style.top = `30%`;
         }
+      }
+    };
+
+    const showString = () => {
+      if (stringSvgRef.current && window.scrollY > 0) {
+        stringSvgRef.current.style.visibility = 'visible';
       }
     };
 
     scrollTo(0, 0);
 
     document.addEventListener('scroll', scrollHandler);
+    document.addEventListener('scroll', showString);
   }, []);
 
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -61,14 +68,14 @@ export default function String({ handleStringPulled }: StringProps) {
   };
 
   const calcPosition = (mouseYPosition: number, prevMouseYPosition: number) => {
-    const value = (mouseYPosition - prevMouseYPosition) / 5;
+    const value = (mouseYPosition - prevMouseYPosition) / 3;
     return value > 10 ? 10 : value;
   };
   const clickString = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isMouseDown && e.clientY > mousePosition.y && stringSvgRef.current) {
       const string = stringSvgRef.current;
       const diff = calcPosition(e.clientY, mousePosition.y);
-      string.style.top = `${20 + diff}%`;
+      string.style.top = `${30 + diff}%`;
 
       if (diff > 9) {
         setIsOnlyStringPulled(true);
@@ -79,7 +86,7 @@ export default function String({ handleStringPulled }: StringProps) {
   useEffect(() => {
     if (!isMouseDown && stringSvgRef.current) {
       const string = stringSvgRef.current;
-      string.style.top = '20%';
+      string.style.top = '30%';
     }
   }, [isMouseDown, stringSvgRef]);
 
@@ -90,18 +97,18 @@ export default function String({ handleStringPulled }: StringProps) {
   return (
     <div className='flex justify-center bg-black w-full h-screen text-white' ref={screenRef}>
       <div
-        className='w-screen h-2/3 fixed top-[20%] left-1/2 -translate-x-2/4 -translate-y-2/4 z-10 bg-black hidden'
+        className='w-screen h-4/5 fixed top-[30%] left-1/2 -translate-x-2/4 -translate-y-2/4 z-10 bg-black hidden'
         ref={coverRef}
       />
       <div
         ref={stringRef}
-        className='relative top-[-50%] w-[50vw] h-[100vh]'
+        className='fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[50vw] h-[100vh]'
         onMouseMove={clickString}
         onMouseDown={onMouseDownString}
         onMouseUp={() => setIsMouseDown(false)}
       >
         <IC_STRING
-          className='[&>path]:fill-white fixed top-[20%] left-1/2 -translate-x-2/4 -translate-y-2/4 transition-all'
+          className='invisible [&>path]:fill-white fixed top-[30%] left-1/2 -translate-x-2/4 -translate-y-2/4 transition-all'
           id='string'
           ref={stringSvgRef}
         />

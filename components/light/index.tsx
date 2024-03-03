@@ -39,7 +39,7 @@ export default function Light({ handleBackground }: LightProps) {
   return (
     <div className='h-[500vh] relative' ref={screenRef}>
       <div ref={pinRef} />
-      <div className='bg-black w-full h-[200vh] text-white'>
+      <div className='bg-black w-full h-[300vh] text-white'>
         <div
           className='flex h-full justify-center items-center flex-col fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4'
           ref={scrollRef}

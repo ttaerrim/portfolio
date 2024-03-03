@@ -10,7 +10,10 @@ export default function Cover({ handleIntro }: CoverProps) {
   const focusEl = useRef<HTMLDivElement>(null);
   const bodyEl = document.querySelector('body') as HTMLBodyElement;
 
-  const getScreenAvg = () => Math.floor((bodyEl.clientWidth + bodyEl.clientHeight) * 0.5);
+  const getScreenAvg = useCallback(
+    () => Math.floor((bodyEl.clientWidth + bodyEl.clientHeight) * 0.5),
+    [bodyEl.clientHeight, bodyEl.clientWidth]
+  );
 
   const onClickScreen = (event: React.MouseEvent<HTMLDivElement>) => {
     if (isEventRunning) return;
@@ -28,7 +31,7 @@ export default function Cover({ handleIntro }: CoverProps) {
         circle ${getScreenAvg() * (0.1 + 0.02 * j)}px at ${eventX} ${eventY},
         rgba(0, 0, 0, 0.01) 0%,
         rgba(0, 0, 0, 0.5) 70%,
-        rgba(0, 0, 0, 0.96) 100%`;
+        rgba(0, 0, 0, 1) 100%`;
       }
     }, 10);
 
@@ -49,7 +52,7 @@ export default function Cover({ handleIntro }: CoverProps) {
             circle ${getScreenAvg() * 0.1}px at ${focusElX} ${focusElY},
             rgba(0, 0, 0, 0.01) 0%,
             rgba(0, 0, 0, 0.5) 70%,
-            rgba(0, 0, 0, 0.96) 100%`;
+            rgba(0, 0, 0, 1) 100%`;
       }
     },
     [getScreenAvg, isEventRunning]
