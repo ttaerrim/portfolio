@@ -36,14 +36,6 @@ export default function Light({ handleBackground }: LightProps) {
     return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
 
-  useEffect(() => {
-    if (isStringPulled && scrollRef.current) {
-      scrollTo(0, 0);
-      document.body.style.overflow = 'auto';
-      scrollRef.current.style.display = 'none';
-    }
-  }, [isStringPulled]);
-
   return (
     <div className='h-[500vh] relative' ref={screenRef}>
       <div ref={pinRef} />

@@ -26,6 +26,15 @@ export default function Cursor() {
     });
   };
 
+  const handleWaitingClickCursor = () => {
+    ['.wait-click'].forEach((link) => {
+      document.querySelectorAll(link).forEach((el) => {
+        el.addEventListener('mouseover', () => setHovered(true));
+        el.addEventListener('mouseout', () => setHovered(false));
+      });
+    });
+  };
+
   const handleMouseDown = () => {
     setClicked(true);
   };
@@ -41,6 +50,7 @@ export default function Cursor() {
     document.addEventListener('mouseup', handleMouseUp);
 
     handleLinkCursor();
+    handleWaitingClickCursor();
 
     return () => {
       document.removeEventListener('scroll', setCursor);
@@ -53,6 +63,7 @@ export default function Cursor() {
   return (
     !isMobileOnly && (
       <div
+        id='cursor'
         ref={cursorRef}
         className={`${
           hovered ? 'w-7 h-7 opacity-100 animate-cursor-blink' : ''
