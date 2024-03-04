@@ -13,6 +13,7 @@ export default function String({ handleStringPulled }: StringProps) {
   const screenRef = useRef<HTMLDivElement>(null);
   const stringSvgRef = useRef<any>(null);
   const [isOnlyStringPulled, setIsOnlyStringPulled] = useState(false);
+  const [cursorPull, setCursorPull] = useState(false);
 
   useEffect(() => {
     const calcTop = () => {
@@ -41,6 +42,7 @@ export default function String({ handleStringPulled }: StringProps) {
         } else if (per > 100) {
           coverRef.current.style.display = 'none';
           document.body.style.overflow = 'hidden';
+          setCursorPull(true);
         } else {
           coverRef.current.style.display = 'block';
           coverRef.current.style.top = `${STRING_TOP_POSITION}%`;
@@ -96,6 +98,19 @@ export default function String({ handleStringPulled }: StringProps) {
       handleStringPulled(isOnlyStringPulled && !isMouseDown);
     }, 300);
   }, [isOnlyStringPulled, isMouseDown, handleStringPulled]);
+
+  useEffect(() => {
+    const cursor = document.querySelector('#cursor') as HTMLDivElement;
+    if (cursor && cursorPull) {
+      cursor.classList.add(
+        'before:content-["pull!!"]',
+        'before:absolute',
+        'before:bottom-[-120%]',
+        'before:text-white',
+        'before:left-[-30%]'
+      );
+    }
+  }, [cursorPull]);
 
   return (
     <div className='flex justify-center bg-black w-full h-screen text-white' ref={screenRef}>
