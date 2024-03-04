@@ -17,17 +17,20 @@ export default function Main() {
   const [isShowBackground, setIsShowBackground] = useState(false);
 
   const handleBackground = (isShow: boolean) => setIsShowBackground(isShow);
-
   const handleIntro = (isFinished: boolean) => setIsFinishedIntro(isFinished);
 
   return (
     <>
       {!isFinishedIntro &&
         (isShowBackground ? <Cover handleIntro={handleIntro} /> : <Light handleBackground={handleBackground} />)}
-      <Header />
-      <Landing onClickPortfolio={onClickPortfolio} />
-      <Introduce portfolioRef={portfolioRef} />
-      <Footer />
+      {isShowBackground && (
+        <>
+          <Header />
+          <Landing onClickPortfolio={onClickPortfolio} />
+          <Introduce portfolioRef={portfolioRef} />
+          <Footer />
+        </>
+      )}
     </>
   );
 }
