@@ -19,7 +19,8 @@ export default function Landing({ onClickPortfolio }: LandingProps) {
           <IC_TWINKLE width={40} height={40} className='absolute bottom-[200%] right-[-5rem]' />
         </div>
         <div className='w-full flex flex-col	items-center'>
-          <div className='p-10'>
+          <div className='p-10 text-center'>
+            <span>여기에 자기 소개 넣기</span>
             <button type='button' onClick={onClickPortfolio}>
               <span>{`<`}</span>
               <WaveText>portfolio</WaveText>
@@ -27,7 +28,7 @@ export default function Landing({ onClickPortfolio }: LandingProps) {
             </button>
           </div>
           {/* <div className='rounded-custom border-2	border-sub-yellow	border-solid	p-10 w-6/12 flex justify-center items-center relative top-[5%]'>
-            <Link href='portfolio'>{`<Portfolio />`}</Link>
+            {`<Portfolio />`}
           </div> */}
         </div>
         <div className='w-full relative'>

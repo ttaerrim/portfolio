@@ -6,6 +6,7 @@ import Introduce from '@/components/landing/Introduce';
 import Header from '@/components/ui/Header';
 import Light from '@/components/light';
 import Cover from '@/components/cover';
+import Projects from '@/components/Projects';
 
 export default function Main() {
   const portfolioRef = useRef<HTMLDivElement>(null);
@@ -21,16 +22,17 @@ export default function Main() {
 
   return (
     <>
-      {!isFinishedIntro &&
+      {/* {!isFinishedIntro &&
         (isShowBackground ? <Cover handleIntro={handleIntro} /> : <Light handleBackground={handleBackground} />)}
-      {isShowBackground && (
-        <>
-          <Header />
-          <Landing onClickPortfolio={onClickPortfolio} />
-          <Introduce portfolioRef={portfolioRef} />
-          <Footer />
-        </>
-      )}
+      {isShowBackground && ( */}
+      <>
+        <Header />
+        <Landing onClickPortfolio={onClickPortfolio} />
+        <Projects />
+        <Introduce portfolioRef={portfolioRef} />
+        <Footer />
+      </>
+      {/* )} */}
     </>
   );
 }
